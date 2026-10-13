@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Recommendation System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🍽️ Food Recommendation System</h1>
+      <p>Un preferences set pannunga – cosine similarity vachu best 3 foods recommend pannum</p>
+    </header>
+
+    <div class="layout">
+      <div class="panel">
+        <h2>Your Preferences</h2>
+
+        <div class="field">
+          <div class="top"><span>Vegetarian?</span></div>
+          <div class="toggle">
+            <button id="vYes" class="on">🟢 Yes</button>
+            <button id="vNo">🔴 No</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="top"><span>🌶️ Spicy preference</span><b id="v-spicy">5</b></div>
+          <input type="range" min="1" max="10" value="5" id="spicy">
+        </div>
+        <div class="field">
+          <div class="top"><span>🥗 Healthy food preference</span><b id="v-healthy">5</b></div>
+          <input type="range" min="1" max="10" value="5" id="healthy">
+        </div>
+        <div class="field">
+          <div class="top"><span>💪 Protein preference</span><b id="v-protein">5</b></div>
+          <input type="range" min="1" max="10" value="5" id="protein">
+        </div>
+        <div class="field">
+          <div class="top"><span>🍔 Fast food preference</span><b id="v-fast_food">5</b></div>
+          <input type="range" min="1" max="10" value="5" id="fast_food">
+        </div>
+
+        <button class="reset" id="reset">Reset</button>
+      </div>
+
+      <div>
+        <div id="hint" class="hl"></div>
+        <div class="list" id="top3"></div>
+        <details>
+          <summary>See all foods ranking</summary>
+          <div class="all" id="all"></div>
+        </details>
+        <p class="note">
+          Formula: Similarity = (User · Food) / (‖User‖ × ‖Food‖).
+          User vector = [Vegetarian, Spicy, Healthy, Protein, Fast_Food].
+          Vegetarian = Yes nu select panna, veg foods mattum filter aagum.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
